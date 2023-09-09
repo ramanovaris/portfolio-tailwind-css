@@ -2,29 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   /* font-family: cursive; */
   font-family: "Gill Sans Extrabold", sans-serif;
 }
 
-.navbar-fixed{
-  @apply fixed z-[99999] bg-white bg-opacity-80;
-  backdrop-filter: blur(5px);
+.navbar-fixed {
+  @apply fixed z-[99999] bg-white bg-opacity-80 backdrop-blur-sm;
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
 }
 
-.hamburger-line{
-  @apply w-[30px] h-[2px] my-2 block bg-dark;
+.hamburger-line {
+  @apply my-2 block h-[2px] w-[30px] bg-dark;
 }
 
-.hamburger-active > span:nth-child(1){
+.hamburger-active > span:nth-child(1) {
   @apply rotate-45;
 }
 
-.hamburger-active > span:nth-child(2){
+.hamburger-active > span:nth-child(2) {
   @apply scale-0;
 }
 
-.hamburger-active > span:nth-child(3){
+.hamburger-active > span:nth-child(3) {
   @apply -rotate-45;
+}
+
+#toggle-dark:checked ~ label div.toggle-circle {
+  @apply translate-x-3;
 }
