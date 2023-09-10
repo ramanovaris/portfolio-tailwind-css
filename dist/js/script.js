@@ -39,7 +39,22 @@ const toggleDark = document.querySelector("#toggle-dark");
 toggleDark.addEventListener("click", function () {
   if (toggleDark.checked) {
     html.classList.add("dark");
+    localStorage.theme = "dark";
   } else {
     html.classList.remove("dark");
+    localStorage.theme = "light";
   }
 });
+
+// Remember State Toggle
+// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+if (
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  toggleDark.checked = true;
+} else {
+  document.documentElement.classList.remove("dark");
+  toggleDark.checked = false;
+}
